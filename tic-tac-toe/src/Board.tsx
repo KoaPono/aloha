@@ -1,7 +1,19 @@
 import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
 import Square from './Square';
 import SquareStates from './SquareState';
 import calculateWinner from './Utils';
+
+const StatusDiv = styled.div`
+  margin-bottom: 10px;
+`;
+const BoardRowDiv = styled.div`
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+`;
 
 interface BoardProps {}
 
@@ -48,22 +60,22 @@ const Board = () => {
 
   return (
     <div>
-      <div className="status">{status}</div>
-      <div className="board-row">
+      <StatusDiv>{status}</StatusDiv>
+      <BoardRowDiv>
         {renderSquare(0)}
         {renderSquare(1)}
         {renderSquare(2)}
-      </div>
-      <div className="board-row">
+      </BoardRowDiv>
+      <BoardRowDiv>
         {renderSquare(3)}
         {renderSquare(4)}
         {renderSquare(5)}
-      </div>
-      <div className="board-row">
+      </BoardRowDiv>
+      <BoardRowDiv>
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
-      </div>
+      </BoardRowDiv>
     </div>
   );
 }

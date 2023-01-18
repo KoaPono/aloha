@@ -1,18 +1,28 @@
 import React from "react";
+import styled from "styled-components";
 import Board from "./Board";
+
+const GameDiv = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+const GameBoardDiv = styled.div``;
+const GameInfoDiv = styled.div`
+    margin-left: 20px;
+`;
 
 class Game extends React.Component {
     render() {
       return (
-        <div className="game">
-          <div className="game-board">
+        <GameDiv>
+          <GameBoardDiv>
             <Board />
-          </div>
-          <div className="game-info">
+          </GameBoardDiv>
+          <GameInfoDiv>
             <div>{/* status */}</div>
             <ol>{/* TODO */}</ol>
-          </div>
-        </div>
+          </GameInfoDiv>
+        </GameDiv>
       );
     }
   }
