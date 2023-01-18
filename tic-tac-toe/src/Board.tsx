@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Square from './Square';
 import SquareStates from './SquareState';
 import calculateWinner from './Utils';
@@ -14,6 +14,7 @@ const Board = () => {
 
   const [squares, setSquares] = useState<Array<SquareStates>>(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState<boolean>(true);
+  const [status, setStatus] = useState<string>('Next player: X');
 
   function handleClick(i: number) {
     const changedSquares = squares.slice();
@@ -33,6 +34,17 @@ const Board = () => {
       />
     );
   }
+
+  useEffect(() => {
+    const winner = calculateWinner(squares);
+    if (winner) {
+      setStatus('Winner: ' + winner);
+    } else {
+      setStatus('Next player: ' + (xIsNext ? 'X' : 'O'));
+    }
+  }, [squares])
+
+  
 
   return (
     <div>
