@@ -1,6 +1,7 @@
 import SquareStates from "./SquareState";
 
 function calculateWinner(squares: Array<SquareStates>) {
+    // TODO: Configure Draw State
     const lines = [
       [0, 1, 2],
       [3, 4, 5],

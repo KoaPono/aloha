@@ -10,13 +10,42 @@ export default {
 
 } as ComponentMeta<typeof App>;
 
+const clickSquare = async(squareNumber: number) => {
+    const square = screen.getByTestId(`Square-${squareNumber}`);
+    expect(square).toHaveTextContent('');
+    userEvent.click(square);
+}
+
 export const DefaultTicTacToe = {};
 
 export const XWins = {
     play: async () => {
-        const square0= screen.getByTestId('Square-0');
-        expect(square0).toHaveTextContent('');
-        userEvent.click(square0);
-        expect(square0).toHaveTextContent('X');
+        const gameStatus= screen.getByTestId('game-status');
+        expect(gameStatus).toHaveTextContent('Next player: X');
+        await clickSquare(0);
+        await clickSquare(1);
+        await clickSquare(3);
+
+        //TODO: Finish the Test
+
+        expect(gameStatus).toHaveTextContent('Next player: O');
     },
 }
+
+export const OWins = {
+    play: async () => {
+        //TODO: Finish the Test
+    },
+}
+
+export const Draw = {
+    play: async () => {
+        //TODO: Finish the Test
+    },
+}
+
+export const ResetGame = {
+    play: async () => {
+      // TODO: Finish the test
+    }
+  }

@@ -15,8 +15,6 @@ const BoardRowDiv = styled.div`
   }
 `;
 
-interface BoardProps {}
-
 interface BoardState {
     squares: Array<SquareStates>,
     xIsNext: boolean
@@ -48,6 +46,8 @@ const Board = () => {
     );
   }
 
+  // TODO: Implement reset game function
+
   useEffect(() => {
     const winner = calculateWinner(squares);
     if (winner) {
@@ -55,13 +55,12 @@ const Board = () => {
     } else {
       setStatus('Next player: ' + (xIsNext ? 'X' : 'O'));
     }
+    // TODO: Configure draw state
   }, [squares])
-
-  
 
   return (
     <div>
-      <StatusDiv>{status}</StatusDiv>
+      <StatusDiv data-testId="game-status">{status}</StatusDiv>
       <BoardRowDiv>
         {renderSquare(0)}
         {renderSquare(1)}
@@ -77,6 +76,7 @@ const Board = () => {
         {renderSquare(7)}
         {renderSquare(8)}
       </BoardRowDiv>
+      {/* TODO: Figure out a way to reset the game when won, only show when game is over */}
     </div>
   );
 }
