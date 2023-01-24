@@ -25,14 +25,16 @@ const SquareButton = styled.button`
 interface SquareProps {
     squareState: SquareStates;
     onClick: Function;
+    id?: string;
 }
 
 function Square({
     squareState,
-    onClick
+    onClick,
+    id
 }: SquareProps) {
     return (
-      <SquareButton onClick={() => onClick()}>
+      <SquareButton data-testId={id} onClick={() => onClick()}>
         {squareState}
       </SquareButton>
     );

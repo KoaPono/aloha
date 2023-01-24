@@ -42,6 +42,7 @@ const Board = () => {
     return (
       <Square 
         squareState={squares[i]}
+        id={`Square-${i}`}
         onClick={() => handleClick(i)}
       />
     );
