@@ -22,25 +22,55 @@ export const XWins = {
     play: async () => {
         const gameStatus= screen.getByTestId('game-status');
         expect(gameStatus).toHaveTextContent('Next player: X');
-        await clickSquare(0);
-        await clickSquare(1);
-        await clickSquare(3);
 
-        //TODO: Finish the Test
-
+        await clickSquare(0); //X
         expect(gameStatus).toHaveTextContent('Next player: O');
+
+        await clickSquare(1); //O
+        await clickSquare(3); //X
+        await clickSquare(4); //O
+        await clickSquare(6); //X Wins
+
+        expect(gameStatus).toHaveTextContent('Winner: X');
     },
 }
 
 export const OWins = {
     play: async () => {
-        //TODO: Finish the Test
+        const gameStatus= screen.getByTestId('game-status');
+        expect(gameStatus).toHaveTextContent('Next player: X');
+
+        await clickSquare(1); //X
+        expect(gameStatus).toHaveTextContent('Next player: O');
+
+        await clickSquare(0); //O
+        await clickSquare(4); //X
+        await clickSquare(3); //O
+        await clickSquare(8); //X
+        await clickSquare(6); //O Wins
+
+        expect(gameStatus).toHaveTextContent('Winner: O');
     },
 }
 
 export const Draw = {
     play: async () => {
-        //TODO: Finish the Test
+        const gameStatus= screen.getByTestId('game-status');
+        expect(gameStatus).toHaveTextContent('Next player: X');
+
+        await clickSquare(1); //X
+        expect(gameStatus).toHaveTextContent('Next player: O');
+
+        await clickSquare(0); //O
+        await clickSquare(3); //X
+        await clickSquare(2); //O
+        await clickSquare(5); //X
+        await clickSquare(4); //O
+        await clickSquare(6); //X
+        await clickSquare(7); //O
+        await clickSquare(8); //X
+
+        expect(gameStatus).toHaveTextContent('Draw');
     },
 }
 
