@@ -1,7 +1,7 @@
+import { middleware } from "yargs";
 import SquareStates from "./SquareState";
 
 function calculateWinner(squares: Array<SquareStates>) {
-    // TODO: Configure Draw State
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -18,6 +18,14 @@ function calculateWinner(squares: Array<SquareStates>) {
         return squares[a];
       }
     }
+    for (let i = 0; i < squares.length; i++) {
+      if (squares[i] == null) {
+        return null
+      }
+    }
+
+    // Return Draw
+    console.log('Draw');
     return null;
   }
 
