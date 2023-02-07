@@ -12,15 +12,15 @@ const StyledResetButton = styled.button`
 
 interface ResetProps {
   onClick: Function;
-  id?: string;
+  'data-testid'?: string;
 }
 
 function ResetButton({
     onClick,
-    id
+    'data-testid': dataTestId
 }: ResetProps) {
     return (
-      <StyledResetButton data-testId={id} name="Reset Game" onClick={() => onClick()}>
+      <StyledResetButton data-testid={dataTestId} name="Reset Game" onClick={() => onClick()}>
         {'Reset Game'}
       </StyledResetButton>
     );

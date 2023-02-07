@@ -76,6 +76,8 @@ export const Draw = {
 
 export const ResetGame = {
     play: async () => {
+        const getResetButton= () => screen.queryByTestId('reset');
+        expect(getResetButton()).toBeNull();
         const gameStatus= screen.getByTestId('game-status');
         expect(gameStatus).toHaveTextContent('Next player: X');
 
@@ -88,6 +90,9 @@ export const ResetGame = {
         await clickSquare(6); //X Wins
 
         expect(gameStatus).toHaveTextContent('X Wins!');
+
+        // Check Reset Button Shows
+        expect(getResetButton()).toBeVisible();
 
         // Click Reset
         //expect(gameStatus).toHaveTextContent('Next player: X');
