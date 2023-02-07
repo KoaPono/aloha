@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Square from './Square';
 import SquareStates from './SquareState';
-import calculateWinner from './Utils';
+import calculateGameState from './Utils';
+import ResetButton from './ResetButton';
 
 const StatusDiv = styled.div`
   margin-bottom: 10px;
@@ -28,7 +29,7 @@ const Board = () => {
 
   function handleClick(i: number) {
     const changedSquares = squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+    if (calculateGameState(squares) || squares[i]) {
       return;
     }
     changedSquares[i] = xIsNext ? 'X' : 'O';
@@ -49,13 +50,12 @@ const Board = () => {
   // TODO: Implement reset game function
 
   useEffect(() => {
-    const winner = calculateWinner(squares);
+    const winner = calculateGameState(squares);
     if (winner) {
-      setStatus('Winner: ' + winner);
+      setStatus(winner);
     } else {
       setStatus('Next player: ' + (xIsNext ? 'X' : 'O'));
     }
-    // TODO: Configure draw state
   }, [squares])
 
   return (
@@ -76,7 +76,7 @@ const Board = () => {
         {renderSquare(7)}
         {renderSquare(8)}
       </BoardRowDiv>
-      {/* TODO: Figure out a way to reset the game when won, only show when game is over */}
+      <ResetButton data-testid="reset" onClick={() => {}}/>
     </div>
   );
 }

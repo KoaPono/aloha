@@ -31,7 +31,7 @@ export const XWins = {
         await clickSquare(4); //O
         await clickSquare(6); //X Wins
 
-        expect(gameStatus).toHaveTextContent('Winner: X');
+        expect(gameStatus).toHaveTextContent('X Wins!');
     },
 }
 
@@ -49,7 +49,7 @@ export const OWins = {
         await clickSquare(8); //X
         await clickSquare(6); //O Wins
 
-        expect(gameStatus).toHaveTextContent('Winner: O');
+        expect(gameStatus).toHaveTextContent('O Wins!');
     },
 }
 
@@ -76,6 +76,20 @@ export const Draw = {
 
 export const ResetGame = {
     play: async () => {
-      // TODO: Finish the test
-    }
+        const gameStatus= screen.getByTestId('game-status');
+        expect(gameStatus).toHaveTextContent('Next player: X');
+
+        await clickSquare(0); //X
+        expect(gameStatus).toHaveTextContent('Next player: O');
+
+        await clickSquare(1); //O
+        await clickSquare(3); //X
+        await clickSquare(4); //O
+        await clickSquare(6); //X Wins
+
+        expect(gameStatus).toHaveTextContent('X Wins!');
+
+        // Click Reset
+        //expect(gameStatus).toHaveTextContent('Next player: X');
+    },
   }

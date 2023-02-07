@@ -1,7 +1,7 @@
 import React from 'react';
 import Square from './Square';
 import SquareStates from './SquareState';
-import calculateWinner from './Utils';
+import calculateGameState from './Utils';
 
 interface BoardProps {}
 
@@ -23,7 +23,7 @@ class Board extends React.Component {
   
     handleClick(i: number) {
       const squares = this.state.squares.slice();
-      if (calculateWinner(squares) || squares[i]) {
+      if (calculateGameState(squares) || squares[i]) {
         return;
       }
       squares[i] = this.state.xIsNext ? 'X' : 'O';
@@ -43,10 +43,11 @@ class Board extends React.Component {
     }
   
     render() {
-      const winner = calculateWinner(this.state.squares);
+      const winner = calculateGameState(this.state.squares);
       let status;
       if (winner) {
-        status = 'Winner: ' + winner;
+        status = winner;
+        
       } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }

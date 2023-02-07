@@ -1,7 +1,9 @@
 import { middleware } from "yargs";
 import SquareStates from "./SquareState";
 
-function calculateWinner(squares: Array<SquareStates>) {
+type GameState = 'X Wins!' | 'O Wins!' | 'Draw' | null;
+
+function calculateGameState(squares: Array<SquareStates>) : GameState {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -15,18 +17,22 @@ function calculateWinner(squares: Array<SquareStates>) {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a];
+        // Calculate Winning Player
+        if (squares[a] === 'O') {
+          return 'O Wins!';
+        } else if (squares[a] === 'X') {
+          return 'X Wins!';
+        }
       }
     }
     for (let i = 0; i < squares.length; i++) {
       if (squares[i] == null) {
-        return null
+        return null;
       }
     }
 
     // Return Draw
-    console.log('Draw');
-    return null;
+    return 'Draw';
   }
 
-  export default calculateWinner;
+  export default calculateGameState;
