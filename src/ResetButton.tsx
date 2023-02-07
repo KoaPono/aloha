@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ResetButton = styled.button`
+const StyledResetButton = styled.button`
+  margin-top: 20px;
   
   &:focus{
     outline: none;
@@ -14,14 +15,14 @@ interface ResetProps {
   id?: string;
 }
 
-function Reset({
+function ResetButton({
     onClick,
     id
 }: ResetProps) {
     return (
-      <ResetButton data-testId={id} name="Reset Game" onClick={() => onClick()}>
-        Reset Game
-      </ResetButton>
+      <StyledResetButton data-testId={id} name="Reset Game" onClick={() => onClick()}>
+        {'Reset Game'}
+      </StyledResetButton>
     );
   }
 

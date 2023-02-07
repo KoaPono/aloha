@@ -26,6 +26,7 @@ const Board = () => {
   const [squares, setSquares] = useState<Array<SquareStates>>(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState<boolean>(true);
   const [status, setStatus] = useState<string>('Next player: X');
+  const [showResetButton, setShowResetButton] = useState<boolean>(false);
 
   function handleClick(i: number) {
     const changedSquares = squares.slice();
@@ -47,12 +48,11 @@ const Board = () => {
     );
   }
 
-  // TODO: Implement reset game function
-
   useEffect(() => {
     const winner = calculateGameState(squares);
     if (winner) {
       setStatus(winner);
+      setShowResetButton(true);
     } else {
       setStatus('Next player: ' + (xIsNext ? 'X' : 'O'));
     }
@@ -76,7 +76,7 @@ const Board = () => {
         {renderSquare(7)}
         {renderSquare(8)}
       </BoardRowDiv>
-      <ResetButton data-testid="reset" onClick={() => {}}/>
+      {showResetButton && (<ResetButton data-testid="reset" onClick={() => {}}/>)}
     </div>
   );
 }
