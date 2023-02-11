@@ -26,7 +26,7 @@ function calculateGameState(squares: Array<SquareStates>) : GameState {
       }
     }
     for (let i = 0; i < squares.length; i++) {
-      if (squares[i] == null) {
+      if (squares[i] == null || squares[i] == '') {
         return null;
       }
     }
