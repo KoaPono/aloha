@@ -38,6 +38,13 @@ const Board = () => {
     setXIsNext(!xIsNext);
   }
 
+  function onClick() {
+    setStatus('Next player: X');
+    setSquares(Array<SquareStates>(9).fill(''));
+    setShowResetButton(false);
+    setXIsNext(true);
+  }
+
   function renderSquare(i: number) {
     return (
       <Square 
@@ -76,7 +83,7 @@ const Board = () => {
         {renderSquare(7)}
         {renderSquare(8)}
       </BoardRowDiv>
-      {showResetButton && (<ResetButton data-testid="reset" onClick={() => {}}/>)}
+      {showResetButton && (<ResetButton data-testid="reset" onClick={() => onClick()}/>)}
     </div>
   );
 }
