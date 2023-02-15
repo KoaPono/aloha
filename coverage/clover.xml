@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1676424864132" clover="3.2.0">
+  <project timestamp="1676424864132" name="All files">
+    <metrics statements="12" coveredstatements="8" conditionals="13" coveredconditionals="8" methods="1" coveredmethods="1" elements="26" coveredelements="17" complexity="0" loc="12" ncloc="12" packages="1" files="2" classes="2"/>
+    <file name="SquareState.ts" path="/workspaces/aloha/src/SquareState.ts">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+    </file>
+    <file name="Utils.ts" path="/workspaces/aloha/src/Utils.ts">
+      <metrics statements="12" coveredstatements="8" conditionals="13" coveredconditionals="8" methods="1" coveredmethods="1"/>
+      <line num="7" count="4" type="stmt"/>
+      <line num="17" count="4" type="stmt"/>
+      <line num="18" count="8" type="stmt"/>
+      <line num="19" count="8" type="cond" truecount="5" falsecount="0"/>
+      <line num="21" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="3" type="cond" truecount="1" falsecount="1"/>
+      <line num="24" count="3" type="stmt"/>
+      <line num="28" count="0" type="stmt"/>
+      <line num="29" count="0" type="cond" truecount="0" falsecount="4"/>
+      <line num="30" count="0" type="stmt"/>
+      <line num="35" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>
