@@ -20,7 +20,8 @@ function calculateGameState(squares: Array<SquareStates>) : GameState {
         // Calculate Winning Player
         if (squares[a] === 'O') {
           return 'O Wins!';
-        } else if (squares[a] === 'X') {
+        }
+        if (squares[a] === 'X') {
           return 'X Wins!';
         }
       }

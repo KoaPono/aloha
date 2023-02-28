@@ -3,8 +3,6 @@ import calculateGameState from './Utils';
 
 describe('calculateGameState', () => {
   describe('X wins', () => {
-    // TODO: Calculate and test all possible winning combinations for X
-    // 3 across, 3 down, 2 diagonal
     it('Top across', () => {
       const squares: Array<SquareStates> = ['X', 'X', 'X', 'O', 'O', '', '', '', ''];
       expect(calculateGameState(squares)).toBe('X Wins!');
@@ -19,32 +17,85 @@ describe('calculateGameState', () => {
     })
 
     it('Left down', () => {
-
+      const squares: Array<SquareStates> = ['X', 'O', '', 'X', 'O', '', 'X', '', ''];
+      expect(calculateGameState(squares)).toBe('X Wins!');
     })
     it('Middle down', () => {
-      
+      const squares: Array<SquareStates> = ['', 'X', '', 'O', 'X', '', 'O', 'X', ''];
+      expect(calculateGameState(squares)).toBe('X Wins!');
     })
     it('Right down', () => {
-      
+      const squares: Array<SquareStates> = ['', 'O', 'X', '', 'O', 'X', '', '', 'X'];
+      expect(calculateGameState(squares)).toBe('X Wins!');
     })
 
     it('Left diagonal', () => {
-
+      const squares: Array<SquareStates> = ['X', 'O', '', 'O', 'X', '', '', '', 'X'];
+      expect(calculateGameState(squares)).toBe('X Wins!');
     })
     it('Middle diagonal', () => {
-      
+      const squares: Array<SquareStates> = ['', 'O', 'X', 'O', 'X', '', 'X', '', ''];
+      expect(calculateGameState(squares)).toBe('X Wins!');
     })
 
   });
-  it('should return O when O wins', () => {
-    const squares: Array<SquareStates> = ['X', 'X', '', 'O', 'O', 'O', '', '', ''];
-    expect(calculateGameState(squares)).toBe('O Wins!');
-    // TODO: Calculate and test all possible winning combinations for O
-    // 3 across, 3 down, 2 diagonal
+  describe('O Wins', () => {
+    it('Top across', () => {
+      const squares: Array<SquareStates> = ['O', 'O', 'O', 'X', 'X', '', '', '', ''];
+      expect(calculateGameState(squares)).toBe('O Wins!');
+    })
+    it('Middle across', () => {
+      const squares: Array<SquareStates> = ['X', 'X', '', 'O', 'O', 'O', '', '', ''];
+      expect(calculateGameState(squares)).toBe('O Wins!');
+    })
+    it('Bottom across', () => {
+      const squares: Array<SquareStates> = ['X', 'X', '', '', '', '', 'O', 'O', 'O'];
+      expect(calculateGameState(squares)).toBe('O Wins!');
+    })
+
+    it('Left down', () => {
+      const squares: Array<SquareStates> = ['O', 'X', '', 'O', 'X', '', 'O', '', ''];
+      expect(calculateGameState(squares)).toBe('O Wins!');
+    })
+    it('Middle down', () => {
+      const squares: Array<SquareStates> = ['', 'O', '', 'X', 'O', '', 'X', 'O', ''];
+      expect(calculateGameState(squares)).toBe('O Wins!');
+    })
+    it('Right down', () => {
+      const squares: Array<SquareStates> = ['', 'X', 'O', '', 'X', 'O', '', '', 'O'];
+      expect(calculateGameState(squares)).toBe('O Wins!');
+    })
+
+    it('Left diagonal', () => {
+      const squares: Array<SquareStates> = ['O', 'X', '', 'X', 'O', '', '', '', 'O'];
+      expect(calculateGameState(squares)).toBe('O Wins!');
+    })
+    it('Middle diagonal', () => {
+      const squares: Array<SquareStates> = ['', 'X', 'O', 'X', 'O', '', 'O', '', ''];
+      expect(calculateGameState(squares)).toBe('O Wins!');
+    })
+  })
+  
+  it('Draw', () => {
+    // Calculate and test all possible draw combinations
+    const drawCombinations: Array<Array<SquareStates>> = [
+      ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X'],
+      ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O'],
+      ['O', 'X', 'X', 'X', 'O', 'O', 'O', 'X', 'X'],
+      ['X', 'O', 'O', 'O', 'X', 'X', 'X', 'O', 'O'],
+      ['O', 'X', 'O', 'X', 'O', 'X', 'X', 'O', 'X'],
+      ['X', 'O', 'X', 'O', 'X', 'O', 'O', 'X', 'O'],
+      ['O', 'X', 'X', 'X', 'O', 'O', 'O', 'X', 'X'],
+      ['X', 'O', 'O', 'O', 'X', 'X', 'X', 'O', 'O'],
+    ];
+
+    drawCombinations.forEach((squares: Array<SquareStates>) => {
+      expect(calculateGameState(squares)).toBe('Draw');
+    });
   });
-  it('should return an empty string when no one wins', () => {
-    //const squares: Array<SquareStates> = ['X', 'X', 'O', 'O', 'X', '', '', '', ''];
-    //expect(calculateGameState(squares)).toBe('');
-    // TODO: Calculate and test all possible draw combinations
-  });
+
+  it('Unfinished Game State', () => {
+    const squares: Array<SquareStates> = ['X', 'X', '', 'O', '', 'O', '', '', ''];
+    expect(calculateGameState(squares)).toBe(null);
+  })
 });

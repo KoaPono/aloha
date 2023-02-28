@@ -22,10 +22,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage" : "react-scripts test --coverage --coverageReporters=html",
+    "test:coverage": "react-scripts test --coverage --coverageReporters=html",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "serve:coverage": "http-server ./coverage"
   },
   "eslintConfig": {
     "extends": [
@@ -68,6 +69,7 @@
     "@storybook/react": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "http-server": "^14.1.1",
     "prop-types": "^15.8.1",
     "webpack": "^5.75.0"
   }
