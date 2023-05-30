@@ -1,13 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Game from './Game';
+//import './App.css';
+import styled from 'styled-components';
+import Game from './tic-tac-toe/Game';
+import C4Game from './connect-four/C4Game';
+
+
+const RootDiv = styled.div`
+  text-align: center;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <Game />
-    </div>
+    <RootDiv>
+      {/* <Game /> */}
+      <C4Game />
+    </RootDiv>
   );
 }
 
